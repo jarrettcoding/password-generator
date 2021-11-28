@@ -1,13 +1,12 @@
 // Arrays with all char sets
-var mainOptions = [
-  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
-  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'], 
-  ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '/', '}']
-];
+var upperCaseOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var lowerCaseOptions = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var numberOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; 
+var specCharOptions = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '/', '}'];
 
 // Variables for password options
 var selections = [];
+var selectionsString;
 var pwLength; 
 var upperCase; 
 var lowerCase; 
@@ -39,26 +38,34 @@ var generatePassword = function() {
 
   // add user choices to the selections array for use in generator
   if (upperCase) {
-    selections.concat(mainOptions[0]);
+    selections.push(upperCaseOptions);
     console.log(selections);
   }
   if (lowerCase) {
-    selections.concat(mainOptions[1]);
+    selections.push(lowerCaseOptions);
     console.log(selections);
   }
   if (number) {
-    selections.concat(mainOptions[2]);
+    selections.push(numberOptions);
     console.log(selections);
   }
   if (specChar) {
-    selections.concat(mainOptions[3]);
+    selections.push(specCharOptions);
     console.log(selections);
   }
+
+  var selectionsString = selections.toString();
+  console.log(selectionsString);
   
+  var passwordOutput = "";
+
   // Generate password
   for (i = 0; i < pwLength; i++) {
-    return (selections[Math.floor(Math.random() * selections.length)]);
+    var arrayMath = Math.floor(Math.random() * selectionsString.length);
+    var placeholder = selectionsString[arrayMath];
+    passwordOutput += placeholder();
   }
+  return passwordOutput; 
 }
 
 // Make a reset function
