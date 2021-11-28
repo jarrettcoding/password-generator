@@ -1,8 +1,12 @@
 // Arrays with all char sets
 var upperCaseOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+// var upperCaseOptionsString = upperCaseOptions.toString();
 var lowerCaseOptions = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+// var lowerCaseOptionsString = lowerCaseOptions.toString();
 var numberOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']; 
+// var numberOptionsString = numberOptions.toString();
 var specCharOptions = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '/', '}'];
+// var specCharOptionsString = specCharOptions.toString();
 
 // Variables for password options
 var selections = [];
@@ -27,7 +31,7 @@ var generatePassword = function() {
   } else {
     upperCase = confirm("Would you like Upper Case letters?")
     lowerCase = confirm("Would you like Lower Case letters?")
-    number = confirm("Would you liek numebrs?")
+    number = confirm("Would you like numbers?")
     specChar = confirm("Would you like special characters?")
   }
 
@@ -38,39 +42,37 @@ var generatePassword = function() {
 
   // add user choices to the selections array for use in generator
   if (upperCase) {
-    selections.push(upperCaseOptions);
+    selections = selections.concat(upperCaseOptions);
     console.log(selections);
   }
   if (lowerCase) {
-    selections.push(lowerCaseOptions);
+    selections = selections.concat(lowerCaseOptions);
     console.log(selections);
   }
   if (number) {
-    selections.push(numberOptions);
+    selections = selections.concat(numberOptions);
     console.log(selections);
   }
   if (specChar) {
-    selections.push(specCharOptions);
+    selections = selections.concat(specCharOptions);
     console.log(selections);
   }
 
-  var selectionsString = selections.toString();
-  console.log(selectionsString);
+  // var selectionsString = selections.toString();
+  // console.log(selectionsString);
   
-  var passwordOutput = "";
+  var passwordOutput = [];
 
   // Generate password
   for (i = 0; i < pwLength; i++) {
-    var arrayMath = Math.floor(Math.random() * selectionsString.length);
-    var placeholder = selectionsString[arrayMath];
-    passwordOutput += placeholder();
+    var pickChoices = selections[Math.floor(Math.random() * selections.length)];
+    
+    // var arrayMath = Math.floor(Math.random() * selections.length);
+    // var placeholder = selections[arrayMath];
+    // passwordOutput += placeholder();
   }
-  return passwordOutput; 
+  return pickChoices; 
 }
-
-// Make a reset function
-
-
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
