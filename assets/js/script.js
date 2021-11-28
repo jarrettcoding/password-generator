@@ -15,14 +15,14 @@ var specChar;
 
 // Prompt user:
 var generatePassword = function() {
-  pwLength = window.prompt("Please input a password length from 8 to 120.")
+  pwLength = window.prompt("Please input a password length from 8 to 128.")
   console.log(pwLength);
   if (!pwLength) {
     window.alert("You must enter a password length.")
   } else if (pwLength < 8) {
     window.alert("You must select a minimum length of 8 characters.")
-  } else if (pwLength > 120) {
-    window.alert("You must select a length less than 120 characters.")
+  } else if (pwLength > 128) {
+    window.alert("You must select a length less than 128 characters.")
   } else {
     upperCase = confirm("Would you like Upper Case letters?")
     lowerCase = confirm("Would you like Lower Case letters?")
