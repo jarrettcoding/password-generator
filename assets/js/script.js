@@ -61,17 +61,13 @@ var generatePassword = function() {
   // var selectionsString = selections.toString();
   // console.log(selectionsString);
   
-  var passwordOutput = [];
+  var passwordOutput = "";
 
   // Generate password
   for (i = 0; i < pwLength; i++) {
-    var pickChoices = selections[Math.floor(Math.random() * selections.length)];
-    
-    // var arrayMath = Math.floor(Math.random() * selections.length);
-    // var placeholder = selections[arrayMath];
-    // passwordOutput += placeholder();
+    passwordOutput =  passwordOutput.concat(selections[Math.floor(Math.random() * selections.length)]);
   }
-  return pickChoices; 
+  return passwordOutput; 
 }
 
 // Assignment Code
